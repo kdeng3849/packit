@@ -1,8 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-import Header from './components/headers/Header'
-import DevicesList from './components/devices/DevicesList'
+import Header from './components/headers/Header';
+import DevicesList from './components/devices/DevicesList';
+import Device from './components/devices/Device';
 
 class App extends Component {
   state = {
@@ -34,16 +36,23 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Header />
-        <div className="mx-5 my-3 p-3 bg-white rounded shadow-sm text-left">
-                <h6 className="border-bottom border-gray px-3 pb-2 mb-0">Devices</h6>
+      <Router>
+        <div className="App">
+          <Header />
+          <Route exact path="/devices">
+              <div className="mx-5 my-3 p-3 bg-white rounded shadow-sm text-left">
+                <h4 className="border-bottom border-gray px-3 pb-2 mb-0">Devices</h4>
                   <DevicesList devices={this.state.devices} />
-                <small className="d-block text-right mt-3">
-                <a href="#">All suggestions</a>
-                </small>
+                {/* <small className="d-block text-right mt-3">
+                  <a href="#">All suggestions</a>
+                </small> */}
             </div>
-      </div>
+          </Route>
+          <Route path="/devices/:id" component={Device}>
+
+          </Route>
+        </div>
+      </Router>
     );
   }
 }
