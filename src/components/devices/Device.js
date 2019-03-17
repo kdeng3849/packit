@@ -25,16 +25,91 @@ class Device extends Component {
         return response.json();
       })
       .then(response => {
-        // console.log(response)
         this.setState({ device: response });
       });
   }
 
   render() {
-    const { hostname } = this.state.device;
-    console.log(hostname);
+    const {
+      hostname,
+      description,
+      id,
+      switch_uuid,
+      plan,
+      facility,
+      ip_addresses
+    } = this.state.device;
 
-    return <div className="media text-muted pt-3">{hostname}</div>;
+    let ips = [];
+    if (ip_addresses) {
+      ips = ip_addresses
+        .filter(ip => ip.management)
+        .map(ip => (
+          <tr key={ip.id}>
+            <td>{ip.address}</td>
+            <td>
+              {ip.network}/{ip.cidr}
+            </td>
+            <td>
+              {ip.public ? "Public" : "Private"} IPv{ip.address_family}
+            </td>
+          </tr>
+        ));
+    }
+
+    return (
+      <div className="mx-5 my-3 p-3 bg-white rounded shadow-sm text-left">
+        <h4 className="border-bottom border-gray px-3 pb-2 mb-0">{hostname}</h4>
+        <div className="col-6 mx-5 my-3 p-3 bg-white rounded shadow-sm text-left">
+          <table className="table table-borderless">
+            <tbody>
+              <tr>
+                <th scope="row">Hostname</th>
+                <td>{hostname}</td>
+              </tr>
+              <tr>
+                <th scope="row">Description</th>
+                <td>{description}</td>
+              </tr>
+              <tr>
+                <th scope="row">ID</th>
+                <td>{id}</td>
+              </tr>
+              <tr>
+                <th scope="row">Switch ID</th>
+                <td>{switch_uuid}</td>
+              </tr>
+              <tr>
+                <th scope="row">Config</th>
+                <td>{plan ? plan.name : ""}</td>
+              </tr>
+              <tr>
+                <th scope="row">Facility</th>
+                <td>{facility ? facility.code : ""}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div className="col-4 mx-5 my-3 p-3 bg-white rounded shadow-sm text-left">
+          <table className="table table-sm table-borderless">
+            <thead>
+              <tr>
+                {/* <th className="text-muted" scope="col"><small>#</small></th> */}
+                <th scope="col">Address</th>
+                <th scope="col">Network</th>
+                <th scope="col">Type</th>
+              </tr>
+            </thead>
+            <tbody>{ips ? ips : ""}</tbody>
+          </table>
+        </div>
+        {/* <div className="card">
+                <div className="card-body">
+                    This is some text within a card body.
+                </div>
+            </div> */}
+      </div>
+    );
   }
 }
 

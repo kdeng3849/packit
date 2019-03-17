@@ -6,7 +6,7 @@ function Header() {
   return (
     <div className="nav-scroller bg-white shadow-sm">
       <nav className="nav nav-underline">
-        <a className="nav-link active" href="#">
+        <a className="nav-link active text-info" href="#">
           Project
         </a>
         <a className="nav-link" href="#">

@@ -43,7 +43,7 @@ class App extends Component {
           <Header />
           <Switch>
             <Route exact path="/devices">
-                <DevicesList devices={this.state.devices} />
+              <DevicesList devices={this.state.devices} />
             </Route>
             <Route path="/devices/:id" component={Device} />
           </Switch>
