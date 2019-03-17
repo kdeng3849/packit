@@ -48,9 +48,7 @@ class App extends Component {
                 </small> */}
             </div>
           </Route>
-          <Route path="/devices/:id" component={Device}>
-
-          </Route>
+          <Route path="/devices/:id" component={Device} />
         </div>
       </Router>
     );

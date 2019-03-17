@@ -8,7 +8,7 @@ class DevicesList extends Component {
     //    <TodoItem key={todo.id} todo={todo} markComplete={ this.props.markComplete } delTodo={this.props.delTodo}/>
     // ));
     return this.props.devices.map((device) => (
-            <DeviceItem device={device} />
+            <DeviceItem key={device.id} device={device} />
         ))
   }
 }
