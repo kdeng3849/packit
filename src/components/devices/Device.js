@@ -21,9 +21,13 @@ class Device extends Component {
         redirect: "follow", // manual, *follow, error
         referrer: "no-referrer", // no-referrer, *client
     })
-      .then((device) => {
-        this.setState(() => ({ device }))
+    .then(response => {
+        return response.json()
       })
+    .then(response => {
+        // console.log(response)
+        this.setState({ device: response })
+    });
   }
 
   render() {
