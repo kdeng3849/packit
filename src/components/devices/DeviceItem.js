@@ -9,7 +9,7 @@ class DeviceItem extends Component {
       <div className="media text-muted pt-3">
         <div className="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
           <div className="d-flex justify-content-between align-items-center w-100">
-            <Link to={`/devices/${id}`}>
+            <Link className="text-decoration-none" to={`/devices/${id}`}>
               <strong className="px-4 text-gray-dark">{hostname}</strong>
             </Link>
             <a className="text-danger" href="#">

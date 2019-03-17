@@ -34,10 +34,11 @@ class Device extends Component {
       hostname,
       description,
       id,
-      state,
       switch_uuid,
       plan,
       facility,
+      state,
+      operating_system,
       ip_addresses
     } = this.state.device;
 
@@ -47,11 +48,14 @@ class Device extends Component {
         .filter(ip => ip.management)
         .map(ip => (
           <tr key={ip.id} className="border-bottom border-light">
-            <td>{ip.address}</td>
-            <td>
+            <td className="font-weight-light">{ip.address}</td>
+            <td className="font-weight-light">
               {ip.network}/{ip.cidr}
             </td>
-            <td>
+            <td className="font-weight-light">
+              {ip.gateway}
+            </td>
+            <td className="font-weight-light">
               {ip.public ? "Public" : "Private"} IPv{ip.address_family}
             </td>
           </tr>
@@ -61,41 +65,86 @@ class Device extends Component {
     return (
       <div className="mx-5 my-3 p-3 bg-white rounded shadow-sm text-left">
         <div className="d-flex justify-content-between align-items-end">
-            <span className="h4 px-3 mb-0">{hostname}</span>
-            {/* <span className="badge badge-pill badge-success mb-1">{state}</span> */}
-            <div>
-                <button type="button" class="mx-1 btn btn-sm btn-outline-secondary rounded-pill">LOCK</button>
-                <button type="button" class="mx-1 btn btn-sm btn-outline-danger rounded-pill">DELETE</button>
-
-            </div>
+          <span className="h4 px-3 mb-0">{hostname}</span>
+          {/* <span className="badge badge-pill badge-success mb-1">{state}</span> */}
+          <div>
+            <button
+              type="button"
+              className="mx-1 px-5 btn btn-sm btn-outline-secondary rounded-pill"
+            >
+              LOCK
+            </button>
+            <button
+              type="button"
+              className="mx-1 px-5 btn btn-sm btn-outline-danger rounded-pill"
+            >
+              DELETE
+            </button>
+          </div>
         </div>
         <hr />
         <div className="mx-5 my-3 p-3 bg-white rounded">
           <table className="table table-borderless">
             <tbody>
               <tr className="border-bottom border-light">
-                <th scope="row">Hostname</th>
-                <td>{hostname}</td>
+                <th scope="row">
+                  <small className="text-muted font-weight-bold">
+                    HOSTNAME
+                  </small>
+                </th>
+                <td className="font-weight-light">{hostname}</td>
               </tr>
               <tr className="border-bottom border-light">
-                <th scope="row">Description</th>
-                <td>{description}</td>
+                <th scope="row">
+                  <small className="text-muted font-weight-bold">
+                    DESCRIPTION
+                  </small>
+                </th>
+                <td className="font-weight-light">{description ? description : "-"}</td>
               </tr>
               <tr className="border-bottom border-light">
-                <th scope="row">ID</th>
-                <td>{id}</td>
+                <th scope="row">
+                  <small className="text-muted font-weight-bold">ID</small>
+                </th>
+                <td className="font-weight-light">{id}</td>
               </tr>
               <tr className="border-bottom border-light">
-                <th scope="row">Switch ID</th>
-                <td>{switch_uuid}</td>
+                <th scope="row">
+                  <small className="text-muted font-weight-bold">
+                    SWITCH ID
+                  </small>
+                </th>
+                <td className="font-weight-light">{switch_uuid}</td>
               </tr>
               <tr className="border-bottom border-light">
-                <th scope="row">Config</th>
-                <td>{plan ? plan.name : ""}</td>
+                <th scope="row">
+                  <small className="text-muted font-weight-bold">CONFIG</small>
+                </th>
+                <td className="font-weight-light">{plan ? plan.name : ""}</td>
               </tr>
               <tr className="border-bottom border-light">
-                <th scope="row">Facility</th>
-                <td>{facility ? facility.code : ""}</td>
+                <th scope="row">
+                  <small className="text-muted font-weight-bold">
+                    FACILITY
+                  </small>
+                </th>
+                <td className="font-weight-light">
+                  {facility ? facility.code.toUpperCase() : ""}
+                </td>
+              </tr>
+              <tr className="border-bottom border-light">
+                <th scope="row">
+                  <small className="text-muted font-weight-bold">OS</small>
+                </th>
+                <td className="font-weight-light">
+                  {operating_system ? operating_system.name : ""}
+                </td>
+              </tr>
+              <tr className="border-bottom border-light">
+                <th scope="row">
+                  <small className="text-muted font-weight-bold">STATE</small>
+                </th>
+                <td className="font-weight-light">{state}</td>
               </tr>
             </tbody>
           </table>
@@ -104,20 +153,23 @@ class Device extends Component {
           <table className="table table-borderless">
             <thead>
               <tr className="border-bottom border-light">
-                {/* <th className="text-muted" scope="col"><small>#</small></th> */}
-                <th scope="col">Address</th>
-                <th scope="col">Network</th>
-                <th scope="col">Type</th>
+                <th scope="col">
+                  <small className="text-muted font-weight-bold">ADDRESS</small>
+                </th>
+                <th scope="col">
+                  <small className="text-muted font-weight-bold">NETWORK</small>
+                </th>
+                <th scope="col">
+                  <small className="text-muted font-weight-bold">GATEWAY</small>
+                </th>
+                <th scope="col">
+                  <small className="text-muted font-weight-bold">TYPE</small>
+                </th>
               </tr>
             </thead>
             <tbody>{ips ? ips : ""}</tbody>
           </table>
         </div>
-        {/* <div className="card">
-                <div className="card-body">
-                    This is some text within a card body.
-                </div>
-            </div> */}
       </div>
     );
   }

@@ -9,7 +9,8 @@ class DevicesList extends Component {
     ));
     return (
       <div className="mx-5 my-3 p-3 bg-white rounded shadow-sm text-left">
-        <h4 className="border-bottom border-gray px-3 pb-2 mb-0">Devices</h4>
+        <h4 className="px-3 pb-2 mb-0">Devices</h4>
+        <hr className="mb-0" />
         {devices}
       </div>
     );
