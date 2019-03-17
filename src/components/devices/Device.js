@@ -34,6 +34,7 @@ class Device extends Component {
       hostname,
       description,
       id,
+      state,
       switch_uuid,
       plan,
       facility,
@@ -45,7 +46,7 @@ class Device extends Component {
       ips = ip_addresses
         .filter(ip => ip.management)
         .map(ip => (
-          <tr key={ip.id}>
+          <tr key={ip.id} className="border-bottom border-light">
             <td>{ip.address}</td>
             <td>
               {ip.network}/{ip.cidr}
@@ -59,41 +60,50 @@ class Device extends Component {
 
     return (
       <div className="mx-5 my-3 p-3 bg-white rounded shadow-sm text-left">
-        <h4 className="border-bottom border-gray px-3 pb-2 mb-0">{hostname}</h4>
-        <div className="col-6 mx-5 my-3 p-3 bg-white rounded shadow-sm text-left">
+        <div className="d-flex justify-content-between align-items-end">
+            <span className="h4 px-3 mb-0">{hostname}</span>
+            {/* <span className="badge badge-pill badge-success mb-1">{state}</span> */}
+            <div>
+                <button type="button" class="mx-1 btn btn-sm btn-outline-secondary rounded-pill">LOCK</button>
+                <button type="button" class="mx-1 btn btn-sm btn-outline-danger rounded-pill">DELETE</button>
+
+            </div>
+        </div>
+        <hr />
+        <div className="mx-5 my-3 p-3 bg-white rounded">
           <table className="table table-borderless">
             <tbody>
-              <tr>
+              <tr className="border-bottom border-light">
                 <th scope="row">Hostname</th>
                 <td>{hostname}</td>
               </tr>
-              <tr>
+              <tr className="border-bottom border-light">
                 <th scope="row">Description</th>
                 <td>{description}</td>
               </tr>
-              <tr>
+              <tr className="border-bottom border-light">
                 <th scope="row">ID</th>
                 <td>{id}</td>
               </tr>
-              <tr>
+              <tr className="border-bottom border-light">
                 <th scope="row">Switch ID</th>
                 <td>{switch_uuid}</td>
               </tr>
-              <tr>
+              <tr className="border-bottom border-light">
                 <th scope="row">Config</th>
                 <td>{plan ? plan.name : ""}</td>
               </tr>
-              <tr>
+              <tr className="border-bottom border-light">
                 <th scope="row">Facility</th>
                 <td>{facility ? facility.code : ""}</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div className="col-4 mx-5 my-3 p-3 bg-white rounded shadow-sm text-left">
-          <table className="table table-sm table-borderless">
+        <div className="mx-5 my-3 p-3 bg-white rounded">
+          <table className="table table-borderless">
             <thead>
-              <tr>
+              <tr className="border-bottom border-light">
                 {/* <th className="text-muted" scope="col"><small>#</small></th> */}
                 <th scope="col">Address</th>
                 <th scope="col">Network</th>
