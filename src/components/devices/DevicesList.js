@@ -1,12 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import PropTypes from 'prop-types';
-import DeviceItem from './DeviceItem'
+import DeviceItem from "./DeviceItem";
 
 class DevicesList extends Component {
   render() {
-    return this.props.devices.map((device) => (
-            <DeviceItem key={device.id} device={device} />
-        ))
+    const devices = this.props.devices.map(device => (
+      <DeviceItem key={device.id} device={device} />
+    ));
+    return this.props.devices.map(device => (
+      <DeviceItem key={device.id} device={device} />
+    ));
   }
 }
 
