@@ -43,12 +43,7 @@ class App extends Component {
           <Header />
           <Switch>
             <Route exact path="/devices">
-              <div className="mx-5 my-3 p-3 bg-white rounded shadow-sm text-left">
-                <h4 className="border-bottom border-gray px-3 pb-2 mb-0">
-                  Devices
-                </h4>
                 <DevicesList devices={this.state.devices} />
-              </div>
             </Route>
             <Route path="/devices/:id" component={Device} />
           </Switch>
