@@ -28,7 +28,7 @@ class DevicesList extends Component {
     return (
       <div className="mx-5 my-4 p-3 bg-white rounded shadow-sm text-left">
         <div className="d-flex justify-content-between align-items-end">
-          <span className="h4 px-3 pb-2 mb-0">Devices</span>
+          <span className="h4 px-3 pb-2 mb-0">Servers</span>
           <form onSubmit={this.onSubmit}>
             <div className="input-group">
               <input
