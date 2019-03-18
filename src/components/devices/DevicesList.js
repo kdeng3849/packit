@@ -8,7 +8,7 @@ class DevicesList extends Component {
       <DeviceItem key={device.id} device={device} />
     ));
     return (
-      <div className="mx-5 my-3 p-3 bg-white rounded shadow-sm text-left">
+      <div className="mx-5 my-4 p-3 bg-white rounded shadow-sm text-left">
         <h4 className="px-3 pb-2 mb-0">Devices</h4>
         <hr className="mb-0" />
         {devices}

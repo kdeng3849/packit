@@ -52,9 +52,7 @@ class Device extends Component {
             <td className="font-weight-light">
               {ip.network}/{ip.cidr}
             </td>
-            <td className="font-weight-light">
-              {ip.gateway}
-            </td>
+            <td className="font-weight-light">{ip.gateway}</td>
             <td className="font-weight-light">
               {ip.public ? "Public" : "Private"} IPv{ip.address_family}
             </td>
@@ -63,7 +61,7 @@ class Device extends Component {
     }
 
     return (
-      <div className="mx-5 my-3 p-3 bg-white rounded shadow-sm text-left">
+      <div className="mx-5 my-4 p-3 bg-white rounded shadow-sm text-left">
         <div className="d-flex justify-content-between align-items-end">
           <span className="h4 px-3 mb-0">{hostname}</span>
           {/* <span className="badge badge-pill badge-success mb-1">{state}</span> */}
@@ -100,7 +98,9 @@ class Device extends Component {
                     DESCRIPTION
                   </small>
                 </th>
-                <td className="font-weight-light">{description ? description : "-"}</td>
+                <td className="font-weight-light">
+                  {description ? description : "-"}
+                </td>
               </tr>
               <tr className="border-bottom border-light">
                 <th scope="row">
