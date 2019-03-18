@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 class DeviceItem extends Component {
   render() {
@@ -12,7 +12,10 @@ class DeviceItem extends Component {
             <Link className="text-decoration-none" to={`/devices/${id}`}>
               <strong className="px-4 text-gray-dark">{hostname}</strong>
             </Link>
-            <button className="btn btn-sm btn-link text-danger" onClick={this.props.deleteDevice.bind(this, id)}>
+            <button
+              className="btn btn-sm btn-link text-danger"
+              onClick={this.props.deleteDevice.bind(this, id)}
+            >
               Delete
             </button>
           </div>
@@ -24,7 +27,7 @@ class DeviceItem extends Component {
 }
 
 DeviceItem.propTypes = {
-  device: PropTypes.array.isRequired
-}
+  device: PropTypes.object.isRequired
+};
 
 export default DeviceItem;

@@ -10,11 +10,11 @@ import Project from "./components/projects/Project";
 class App extends Component {
   state = {
     project: {},
-    devices: []
+    devices: [],
+    unfilteredDevices: []
   };
 
   componentDidMount() {
-    
     fetch("https://api.packet.net/projects?include=devices", {
       method: "GET", // *GET, POST, PUT, DELETE, etc.
       mode: "cors", // no-cors, cors, *same-origin
@@ -32,13 +32,26 @@ class App extends Component {
       })
       .then(response => {
         const project = response.projects[0];
-        console.log(project);
-        console.log(project.devices); ////////
-        this.setState({ project, devices: project.devices });
+        this.setState({
+          project,
+          devices: project.devices,
+          unfilteredDevices: project.devices
+        });
       });
   }
 
-  deleteDevice = (id) => {
+  filterDevices = filterString => {
+    this.state.devices = this.state.unfilteredDevices;
+    this.setState({
+      devices: [
+        ...this.state.devices.filter(device =>
+          device.hostname.includes(filterString)
+        )
+      ]
+    });
+  };
+
+  deleteDevice = id => {
     fetch(`https://api.packet.net/devices/${id}`, {
       method: "DELETE", // *GET, POST, PUT, DELETE, etc.
       mode: "cors", // no-cors, cors, *same-origin
@@ -50,9 +63,12 @@ class App extends Component {
       },
       redirect: "follow", // manual, *follow, error
       referrer: "no-referrer" // no-referrer, *client
-    })
-      .then(() => this.setState({ devices: [...this.state.devices.filter(device => device.id !== id)]}))
-  }
+    }).then(() =>
+      this.setState({
+        devices: [...this.state.devices.filter(device => device.id !== id)]
+      })
+    );
+  };
 
   render() {
     const { name } = this.state.project;
@@ -65,7 +81,11 @@ class App extends Component {
               <Project project={this.state.project} />
             </Route>
             <Route exact path="/devices">
-              <DevicesList devices={this.state.devices} deleteDevice={this.deleteDevice}/>
+              <DevicesList
+                devices={this.state.devices}
+                filterDevices={this.filterDevices}
+                deleteDevice={this.deleteDevice}
+              />
             </Route>
             <Route path="/devices/:id" component={Device} />
           </Switch>
