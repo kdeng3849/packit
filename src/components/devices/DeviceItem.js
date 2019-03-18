@@ -4,24 +4,38 @@ import PropTypes from "prop-types";
 
 class DeviceItem extends Component {
   render() {
-    const { id, hostname, state } = this.props.device;
+    const {
+      hostname,
+      id,
+      plan,
+      facility,
+      state,
+      operating_system
+    } = this.props.device;
     return (
-      <div className="media text-muted pt-3">
-        <div className="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-          <div className="d-flex justify-content-between align-items-center w-100">
-            <Link className="text-decoration-none" to={`/devices/${id}`}>
-              <strong className="px-4 text-info">{hostname}</strong>
-            </Link>
-            <button
-              className="btn btn-sm btn-link text-danger"
-              onClick={this.props.deleteDevice.bind(this, id)}
-            >
-              Delete
-            </button>
-          </div>
-          <small className="px-4 d-block">{state.toUpperCase()}</small>
-        </div>
-      </div>
+          <tr key={id} className="border-bottom border-light">
+            <th scope="col" className="font-weight-light">
+              <Link className="text-decoration-none" to={`/devices/${id}`}>
+                <span className="px-4 text-info font-weight-bold">{hostname}</span>
+              </Link>
+              <p className="px-4"><small>{state}</small></p>
+            </th>
+            <td className="font-weight-light">
+              {plan ? plan.name : ""}
+            </td>
+            <td className="font-weight-light">
+              {facility ? facility.code.toUpperCase() : ""}
+            </td>
+            <td className="font-weight-light">{operating_system ? operating_system.name : ""}</td>
+            <td className="font-weight-light">
+              <button
+                className="btn btn-sm btn-link text-danger"
+                onClick={this.props.deleteDevice.bind(this, id)}
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
     );
   }
 }

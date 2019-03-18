@@ -63,7 +63,6 @@ class Device extends Component {
       <div className="mx-5 my-4 p-3 bg-white rounded shadow-sm text-left">
         <div className="d-flex justify-content-between align-items-end">
           <span className="h4 px-3 mb-0">{hostname}</span>
-          {/* <span className="badge badge-pill badge-success mb-1">{state}</span> */}
           <div>
             <button
               type="button"

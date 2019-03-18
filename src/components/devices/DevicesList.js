@@ -52,7 +52,32 @@ class DevicesList extends Component {
           </form>
         </div>
         <hr className="mb-0" />
-        {devices}
+        <div className="mx-5 my-3 p-3 bg-white rounded">
+          <table className="table table-borderless">
+            <thead>
+              <tr className="border-bottom border-light">
+                <th scope="col">
+                  <small className="text-muted font-weight-bold">HOSTNAME</small>
+                </th>
+                <td>
+                  <small className="text-muted font-weight-bold">CONFIG</small>
+                </td>
+                <th>
+                  <small className="text-muted font-weight-bold">LOCATION</small>
+                </th>
+                <td>
+                  <small className="text-muted font-weight-bold">OS</small>
+                </td>
+                <td>
+                  <small className="text-muted font-weight-bold"></small>
+                </td>
+              </tr>
+            </thead>
+            <tbody>{devices}</tbody>
+          </table>
+        </div>
+        {/* <hr className="mb-0" />
+        {devices} */}
       </div>
     );
   }

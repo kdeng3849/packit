@@ -77,7 +77,7 @@ class Project extends Component {
     return (
       <div className="mx-5 my-4 p-3 bg-white rounded shadow-sm text-left">
         <div className="d-flex justify-content-between align-items-end">
-          <span className="h4 px-3 mb-0">{name}</span>
+          <span className="h4 px-3 mb-0">Overview</span>
         </div>
         <hr />
         <div className="mx-5 my-3 p-3 bg-white rounded">
@@ -123,7 +123,7 @@ class Project extends Component {
           </table>
         </div>
         <div className="mx-5 my-3 p-3 bg-white rounded">
-          <h6 className="mx-2">Available facility options</h6>
+          <h6 className="mx-2">Available location options</h6>
           <table className="table table-borderless">
             <thead>
               <tr className="border-bottom border-light">
