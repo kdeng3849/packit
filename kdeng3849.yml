@@ -1,0 +1,36 @@
+about:
+  name: Kelly Deng
+  location: "New York City, NY"
+  timezone: UTC-05
+  hobbies:
+    - "Cooking"
+  favorite_resources:
+    - "Traversy Media"
+bam:
+  skills:
+    - Object oriented programming and data structures
+    - Excited about learning new languages and concepts, trying new things
+    - Doesn’t like to assume, prefers to ask questions to clear any doubts in understanding
+  languages:
+    - [JavaScript/TypeScript, 8]
+    - [Python, 7]
+    - [C, 5]
+  frameworks/libraries:
+    - Bootstrap
+    - Leaflet
+sam:
+  skills:
+    - Networking concepts
+    - Front-end development
+    - Design patterns, project structures
+    - Microservices
+    - Sometimes reluctant to ask for help when stuck
+    - Sometimes gets jumbled trying to explain something and having to start over from square one
+    - Sometimes asks the most obvious questions (see last skill in bam)
+  languages:
+    - Ruby
+    - Golang
+  frameworks/libraries:
+    - Rails
+    - Angular
+    - React
