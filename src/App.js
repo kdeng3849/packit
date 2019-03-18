@@ -38,6 +38,22 @@ class App extends Component {
       });
   }
 
+  deleteDevice = (id) => {
+    fetch(`https://api.packet.net/devices/${id}`, {
+      method: "DELETE", // *GET, POST, PUT, DELETE, etc.
+      mode: "cors", // no-cors, cors, *same-origin
+      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: "same-origin", // include, *same-origin, omit
+      headers: {
+        "X-Auth-Token": "hD7cM283nx3sNmdYWDKfBpPWwcYyFUYw",
+        "Content-Type": "application/json"
+      },
+      redirect: "follow", // manual, *follow, error
+      referrer: "no-referrer" // no-referrer, *client
+    })
+      .then(() => this.setState({ devices: [...this.state.devices.filter(device => device.id !== id)]}))
+  }
+
   render() {
     const { name } = this.state.project;
     return (
@@ -49,7 +65,7 @@ class App extends Component {
               <Project project={this.state.project} />
             </Route>
             <Route exact path="/devices">
-              <DevicesList devices={this.state.devices} />
+              <DevicesList devices={this.state.devices} deleteDevice={this.deleteDevice}/>
             </Route>
             <Route path="/devices/:id" component={Device} />
           </Switch>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class DeviceItem extends Component {
   render() {
@@ -12,9 +12,9 @@ class DeviceItem extends Component {
             <Link className="text-decoration-none" to={`/devices/${id}`}>
               <strong className="px-4 text-gray-dark">{hostname}</strong>
             </Link>
-            <a className="text-danger" href="#">
+            <button className="btn btn-sm btn-link text-danger" onClick={this.props.deleteDevice.bind(this, id)}>
               Delete
-            </a>
+            </button>
           </div>
           <small className="px-4 d-block">{state.toUpperCase()}</small>
         </div>
@@ -23,11 +23,8 @@ class DeviceItem extends Component {
   }
 }
 
-// PropTypes: validation for properties a component should have
-// Todos.propTypes = {
-//   todos: PropTypes.array.isRequired,
-//   markComplete: PropTypes.func.isRequired,
-//   delTodo: PropTypes.func.isRequired
-// }
+DeviceItem.propTypes = {
+  device: PropTypes.array.isRequired
+}
 
 export default DeviceItem;

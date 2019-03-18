@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import PropTypes from 'prop-types';
 
 class Device extends Component {
   state = {
@@ -174,12 +173,5 @@ class Device extends Component {
     );
   }
 }
-
-// PropTypes: validation for properties a component should have
-// Todos.propTypes = {
-//   todos: PropTypes.array.isRequired,
-//   markComplete: PropTypes.func.isRequired,
-//   delTodo: PropTypes.func.isRequired
-// }
 
 export default Device;

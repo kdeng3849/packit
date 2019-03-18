@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 import "./Header.css";
 
@@ -22,11 +22,8 @@ class Header extends Component {
   }
 }
 
-// PropTypes: validation for properties a component should have
-// Todos.propTypes = {
-//   todos: PropTypes.array.isRequired,
-//   markComplete: PropTypes.func.isRequired,
-//   delTodo: PropTypes.func.isRequired
-// }
+Header.propTypes = {
+  projectName: PropTypes.string.isRequired,
+}
 
 export default Header;
